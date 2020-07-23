@@ -27,6 +27,30 @@ int main()
 	myScreen.set("SCREEN");
 	myScreen.display();
 
+	//Making the screen to display my initial 'F'
+	myScreen.clear(' ');
+	myScreen.home();
+	myScreen.set("******");
+	myScreen.home();
+	myScreen.down();
+	myScreen.set("*");
+	myScreen.down();
+	myScreen.set("*");
+	myScreen.down();
+	myScreen.set("*");
+	myScreen.down();
+	myScreen.set("****");
+	myScreen.move(6,1);
+	myScreen.set("*");
+	myScreen.down();
+	myScreen.set("*");
+	myScreen.down();
+	myScreen.set("*");
+	myScreen.down();
+	myScreen.display();
+
+
+
 	return 0;
 }
 
