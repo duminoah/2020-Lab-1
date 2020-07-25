@@ -29,11 +29,14 @@ int main()
 
     //Exercise 4.1
 	//Making the screen to display my initial 'F'
+	//enum class Direction{HOME, FORWARD, BACK, UP, DOWN, END};
+	//Direction dir = Direction::BACK;
 	myScreen.clear(' ');
 	myScreen.home();
 	myScreen.set("******");
 	myScreen.home();
-	myScreen.down();
+	myScreen.move(Screen::Direction::DOWN);
+	//myScreen.down();
 	myScreen.set("*");
 	myScreen.down();
 	myScreen.set("*");
