@@ -37,7 +37,12 @@ void Screen::up()
     // move cursor_ up one row of screen
     // do not wrap around
     if ( row() == 1 ) // at top?
-        cerr << "Screen::up - Cannot wrap around in a vertical direction" << endl;
+    {
+        //cerr << "Screen::up - Cannot wrap around in a vertical direction" << endl;
+        //Exercise 4.4: new lines of code for wrapping around vertically
+        int sub_num = height_*width_ - width_;
+        cursor_ += sub_num;
+    }
     else
         cursor_ -= width_;
 
@@ -49,7 +54,12 @@ void Screen::down()
     // move cursor_ down one row of screen
     // do not wrap around
     if ( row() == height_ ) // at bottom?
-        cerr << "Screen::down - Cannot wrap around in a vertical direction" << endl;
+    {
+        //cerr << "Screen::down - Cannot wrap around in a vertical direction" << endl;
+        //Exercise 4.4: new lines of code for wrapping around vertically
+        int sub_num = height_*width_ - width_;
+        cursor_ -= sub_num;
+    }
     else
         cursor_ += width_;
 
@@ -208,13 +218,23 @@ void Screen::move(Direction dir)
         break;
     case Direction::UP:
         if ( row() == 1 ) // at top?
-            cerr << "Screen::up - Cannot wrap around in a vertical direction" << endl;
+        {
+            //cerr << "Screen::up - Cannot wrap around in a vertical direction" << endl;
+            //Exercise 4.4: new lines of code for wrapping around vertically
+            int sub_num = height_*width_ - width_;
+            cursor_ += sub_num;
+        }
         else
             cursor_ -= width_;
         break;
     case Direction::DOWN:
         if ( row() == height_ ) // at bottom?
-            cerr << "Screen::down - Cannot wrap around in a vertical direction" << endl;
+        {
+            //cerr << "Screen::down - Cannot wrap around in a vertical direction" << endl;
+            //Exercise 4.4: new lines of code for wrapping around vertically
+            int sub_num = height_*width_ - width_;
+            cursor_ -= sub_num;
+        }
         else
             cursor_ += width_;
         break;
