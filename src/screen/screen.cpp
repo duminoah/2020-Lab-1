@@ -244,3 +244,96 @@ void Screen::move(Direction dir)
     }
 }
 
+//Exercise 4.5:Draw Square Function
+void Screen::drawSquare(string::size_type x, string::size_type y,string::size_type boxWidth, string::size_type boxHeight) //const
+{
+    move(x,y);//move to the position specified by x,y coordinates;
+    box_width = boxWidth;//store box width and height in member variables
+    box_height = boxHeight;
+    //Program executes only if
+    auto hor_space = hor_remainingSpace(y);//finding the remaining space horizontal to the placed coordinate
+    auto ver_space = ver_remainingSpace();// finding the remaining space vertical the the placed coordinate
+    if(x < width_ && y < height_ && isSquare())//box should be a square and coordinates should be within the screen size
+    {
+        if(hor_space < boxWidth-1)//if horizontal remaining space is less than the specified box length there should be truncation
+        {
+            cerr << "Screen::drawSquare - Truncating horizontal part of square, "
+                 << "space available: " << hor_space
+                 << ", square length: " << box_width
+                 << endl;
+
+        }
+        if(ver_space < boxHeight-1)//if vertical remaining space is less than the specified box length there should be truncation
+        {
+            cerr << "Screen::drawSquare - Truncating vertical part of square, "
+                 << "space available: " << ver_space
+                 << ", square height: " << box_height
+                 << endl;
+
+        }
+        set('x');
+        for(string::size_type i = 0; i < box_width-1; i++)
+        {
+            if(i == hor_space)
+            {
+                goto opposite_side;
+            }
+            forward();
+            set('x');
+        }
+        for(string::size_type i = 0; i < box_height-1; i++)
+        {
+            if(i == ver_space)
+            {
+                break;
+            }
+            down();
+            set('x');
+        }
+opposite_side:
+        ;
+        move(x,y);
+        for(string::size_type i = 0; i < box_width-1; i++)
+        {
+            if(i == ver_space)
+            {
+                goto end;
+            }
+            down();
+            set('x');
+
+        }
+        for(string::size_type i = 0; i < box_height-1; i++)
+        {
+            if(i == hor_space)
+            {
+                break;
+            }
+            forward();
+            set('x');
+
+        }
+end:
+        ;
+    }
+}
+
+string::size_type Screen::hor_remainingSpace(string::size_type col) const
+{
+    auto edge_cursor = (cursor_ + (width_ - col));
+    return (edge_cursor-cursor_);
+}
+string::size_type Screen::ver_remainingSpace() const
+{
+    auto row_num = row();
+    return (height_-row_num);
+}
+bool Screen::isSquare()const
+{
+    if(box_height != box_width)
+    {
+        cout <<"Not Square"<< endl;
+        return false;
+    }
+    return true;
+}

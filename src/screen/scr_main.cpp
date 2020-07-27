@@ -7,31 +7,19 @@ using namespace std;
 int main()
 {
 	auto myScreen = Screen{6,6};
-	myScreen.forward();
-	myScreen.set('*');
-	myScreen.down();
-	myScreen.set('*');
-	myScreen.move(3,3);
-	myScreen.set("---");
-
 	myScreen.display();
 	cout << endl;
 
 	myScreen.reSize(16,16);
-	myScreen.display();
 	myScreen.clear(' ');
-
-	myScreen.move(7,7);
-	myScreen.set("BIG");
-	myScreen.move(8,5);
-	myScreen.set("SCREEN");
+	myScreen.drawSquare(5,5,4,4);
 	myScreen.display();
 
     //Exercise 4.1
 	//Making the screen to display my initial 'F'
 	//enum class Direction{HOME, FORWARD, BACK, UP, DOWN, END};
 	//Direction dir = Direction::BACK;
-	myScreen.clear(' ');
+	/*myScreen.clear(' ');
 	myScreen.home();
 	myScreen.set("******");
 	myScreen.home();
@@ -51,7 +39,7 @@ int main()
 	myScreen.down();
 	myScreen.set("*");
 	myScreen.down();
-	myScreen.display();
+	myScreen.display();*/
 
     /*Exercise 4.2
         1. The const keyword is being used at the end of member functions - string::size_type height() const { return height_; }
@@ -67,6 +55,12 @@ int main()
         a string nomatter how big it is. The size of the variable is not fixed, it is dictated by the string itself.
     */
 
+    /*Exercise 4.5
+        Yes, I would need access to the internal representation of the screen object in-order to implement the function to draw
+        a square because it involves new member functions which initially do not form part of the class object.
+        Yes, a function like this forms part of the responsibilities of a screen object for a client to be able to highlight
+        a part of the screen which they may intend to use for typing information or clearly show a piece of writing on the screen
+    */
 	return 0;
 }
 
