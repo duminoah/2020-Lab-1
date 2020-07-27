@@ -61,6 +61,15 @@ int main()
         Yes, a function like this forms part of the responsibilities of a screen object for a client to be able to highlight
         a part of the screen which they may intend to use for typing information or clearly show a piece of writing on the screen
     */
+
+    /*Exercise 4.6
+        A more intuitive way of representing the screen class would perhaps be to use an array of characters (charater arrays).
+        Arrays are much easier for accesibility and navigation
+        It is important to maintain the class interface because in doing so, time and resources are saved by avoiding to re-think
+        and re-implement it using a different interface.
+        We can change the implementation in-order to come up with a more efficient way that has less running time and may use less
+        memory
+    */
 	return 0;
 }
 
