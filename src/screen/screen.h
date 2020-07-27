@@ -55,15 +55,32 @@ public:
 	void display() const;
 	// check whether the specified co-ordinates lie within the screen
 	bool checkRange(string::size_type row, string::size_type col) const;
+	//Exercise 4.3: Enum Declaration
+	enum class Direction{HOME, FORWARD, BACK, UP, DOWN, END};
+	//Exercise 4.3: Additional move function
+	void move(Direction dir);
+	//Exercise 4.5:Draw Square Function which accepts coordinates x,y and box length and height
+	void drawSquare(string::size_type x, string::size_type y,string::size_type boxWidth, string::size_type boxHeight);
 
 private:
 	// constants
 	// 0 represents the top-left screen element
 	const string::size_type TOP_LEFT = 0;
-	
+
 	// private member functions
 	string::size_type remainingSpace() const;
 	string::size_type row() const;
+	//Exercise 4.5 helper functions
+	//Checks if square width is within screen size
+	string::size_type hor_remainingSpace(string::size_type col) const;
+    //Checks if square height is within screen size
+	string::size_type ver_remainingSpace()const;
+	//Checks to see if suplied parameters give a square
+    bool isSquare()const;
+	//Check to see if square box height and width are within screen size
+	//size of small square box
+	string::size_type box_width;
+	string::size_type box_height;
 
 	// private data members
 	// (using a trailing underscore is a naming convention for private data - not a requirement)
@@ -71,7 +88,7 @@ private:
 	// number of Screen rows
 	string::size_type height_;
 	// number of Screen columns
-	string::size_type width_;	
+	string::size_type width_;
 	// default position of the Screen's cursor, use in-class initilisation
 	string::size_type cursor_ = TOP_LEFT;
 	// the Screen's data is stored as a string
