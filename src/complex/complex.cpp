@@ -8,8 +8,9 @@ using namespace std; // cout, endl, complex are all part of this namespace
 
 int main()
 {
-	auto num1 = complex<float>{2.0, 2.0};  // use auto for type deduction
-	auto num2 = complex<float>{4.0, -2.0}; // use uniform initialisation syntax (curly braces)
+	using cmplxNum=complex<float>; //using aliasing for a more readable code
+	auto num1 = cmplxNum{2.0, 2.0};  // use auto for type deduction
+	auto num2 = cmplxNum{4.0, -2.0}; // use uniform initialisation syntax (curly braces)
 
 	auto answer = num1 * num2; // type deduced for 'answer' is: complex<float>
 
