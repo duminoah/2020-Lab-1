@@ -18,8 +18,10 @@ int main()
 			<< " + " << answer.imag() << "j" 
 			<< endl	<< endl;
 
-	// answer++;
-
+	// answer++;  This line wont run, or the compiler  will result in an error, beacuse 
+	//	      the operator '++' was not overloaded in complex class, that is, it is not 
+	//	      declared as a memeber function 'operator'  in the complex class, hence still
+	//	      belongs in the std namespace.
 	return 0;
 }
 
